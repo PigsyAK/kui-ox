@@ -30,7 +30,6 @@ public class TextAreaPanel extends JPanel {
         textArea = TextAreaUtils.createTextArea();
         textArea.setEditable(true);
         RTextScrollPane scrollPane = new RTextScrollPane(textArea);
-        scrollPane.setBorder(null);
 
         this.add(toolBar, BorderLayout.NORTH);
         this.add(scrollPane, BorderLayout.CENTER);
@@ -52,6 +51,12 @@ public class TextAreaPanel extends JPanel {
         });
 
         toolBar.add(warpBtn);
+    }
+
+    public void setPaneName(String name) {
+        JLabel label = new JLabel(name);
+        label.setFont(new Font(label.getFont().getName(), Font.BOLD, label.getFont().getSize()));
+        toolBar.add(label, 0);
     }
 
     public void setText(String text) {

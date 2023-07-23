@@ -49,8 +49,6 @@
             <version>3.3.1</version>
         </dependency>
 
-
-
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/dk.brics/automaton &ndash;&gt;-->
 <!--        <dependency>-->
 <!--            <groupId>dk.brics</groupId>-->

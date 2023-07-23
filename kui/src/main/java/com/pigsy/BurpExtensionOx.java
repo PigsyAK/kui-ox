@@ -7,7 +7,6 @@ import com.pigsy.burp.MyContextMenuItemsProvider;
 import com.pigsy.burp.MenuUtil;
 import com.pigsy.utils.WorkspaceUtil;
 
-import javax.swing.*;
 
 public class BurpExtensionOx implements BurpExtension, ExtensionUnloadingHandler {
     private final KuiOxTab kuiOxTab = new KuiOxTab();

@@ -29,6 +29,10 @@ public class WorkspaceUtil {
         return Path.of(System.getProperty("user.home"), ".kui-ox");
     }
 
+    public static Path getBinPath() {
+        return Path.of(System.getProperty("user.home"), ".kui-ox", "bin");
+    }
+
     public static void initEnv() {
         Path workDir = getWorkSpacePath();
         if (!Files.exists(workDir)) {
@@ -43,8 +47,8 @@ public class WorkspaceUtil {
         // 在工作目录下添加目录
         paths.add("bin");
         paths.add("conf");
-        paths.add("conf/interactsh");
         paths.add("data");
+        paths.add("data/interactsh");
         paths.add("temp");
 
         for (String path : paths) {
@@ -83,4 +87,11 @@ public class WorkspaceUtil {
     }
 
 
+    public static Path getConfigPath() {
+        return Path.of(System.getProperty("user.home"), ".kui-ox", "conf");
+    }
+
+    public static Path getDataPath() {
+        return Path.of(System.getProperty("user.home"), ".kui-ox", "data");
+    }
 }

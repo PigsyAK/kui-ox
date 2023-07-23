@@ -1,5 +1,7 @@
 package com.pigsy.interactsh;
 
+import com.pigsy.utils.ExecUtil;
+import com.pigsy.utils.FileUtil;
 import com.pigsy.utils.WorkspaceUtil;
 
 import javax.swing.*;
@@ -8,8 +10,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class InteractshPanel extends JPanel {
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private Future<?> future;
     private JToolBar toolBar = new JToolBar();
     private JLabel domainLabel = new JLabel("请刷新域名");
     private JTable recordTable;
@@ -42,7 +52,9 @@ public class InteractshPanel extends JPanel {
 
         // Right
         requestTextArea = new TextAreaPanel();
+        requestTextArea.setPaneName("REQUEST ");
         responseTextArea = new TextAreaPanel();
+        responseTextArea.setPaneName("RESPONSE ");
         JSplitPane splitDataPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, requestTextArea, responseTextArea);
         splitDataPane.setDividerLocation(350);
 
@@ -59,10 +71,37 @@ public class InteractshPanel extends JPanel {
         toolBar.setFloatable(false);
 
         JButton createBtn = new JButton("刷新域名");
+        createBtn.setSelected(true);
         createBtn.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                domainLabel.setText("cjvs95c2vtc0000ey8hggjphw1ayyyyyb.oast.fun");
+                // .\interactsh-client -sf interact.session -o interact.data -json -psf interactsh_payload.txt
+                Path sessionPath = Path.of(WorkspaceUtil.getDataPath().toString(), "interactsh", "interact.session");
+                Path outputPath = Path.of(WorkspaceUtil.getDataPath().toString(), "interactsh", "interact.output");
+                Path payloadPath = Path.of(WorkspaceUtil.getDataPath().toString(), "interactsh", "interact.payload");
+                if (!Files.exists(payloadPath)) {
+                    try {
+                        Files.createFile(payloadPath);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+                String cmd = "\"" + Path.of(WorkspaceUtil.getBinPath().toString(), "interactsh-client") + "\"" +
+                        " -sf " + "\"" + sessionPath + "\"" +
+                        " -o " + "\"" + outputPath + "\"" +
+                        " -json " +
+                        " -ps " +
+                        " -psf " + "\"" + payloadPath + "\"";
+                System.out.println(cmd);
+
+                new Thread(() -> ExecUtil.executeCommand(cmd)).start();
+                try {
+                    Thread.sleep(6000); // 等待5秒钟
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+                domainLabel.setText(FileUtil.readFileToString(payloadPath.toString()).strip());
             }
         });
 
@@ -72,7 +111,9 @@ public class InteractshPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    WorkspaceUtil.setClipboardString(domainLabel.getText());
+                    Path payloadPath = Path.of(WorkspaceUtil.getDataPath().toString(), "interactsh", "interact.payload");
+                    domainLabel.setText(FileUtil.readFileToString(payloadPath.toString()).strip());
+                    WorkspaceUtil.setClipboardString(domainLabel.getText().strip());
                 }
             }
         });
