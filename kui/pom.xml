@@ -27,6 +27,66 @@
             <artifactId>montoya-api</artifactId>
             <version>LATEST</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fifesoft/rsyntaxtextarea -->
+        <dependency>
+            <groupId>com.fifesoft</groupId>
+            <artifactId>rsyntaxtextarea</artifactId>
+            <version>3.3.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fifesoft/rstaui -->
+        <dependency>
+            <groupId>com.fifesoft</groupId>
+            <artifactId>rstaui</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fifesoft/autocomplete -->
+        <dependency>
+            <groupId>com.fifesoft</groupId>
+            <artifactId>autocomplete</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+
+
+
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/dk.brics/automaton &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dk.brics</groupId>-->
+<!--            <artifactId>automaton</artifactId>-->
+<!--            <version>1.12-4</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/net.sourceforge.jregex/jregex &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>net.sourceforge.jregex</groupId>-->
+<!--            <artifactId>jregex</artifactId>-->
+<!--            <version>1.2_01</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.squareup.okhttp</groupId>-->
+<!--            <artifactId>okhttp</artifactId>-->
+<!--            <version>2.7.5</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.yaml/snakeyaml &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.yaml</groupId>-->
+<!--            <artifactId>snakeyaml</artifactId>-->
+<!--            <version>2.0</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.jetbrains/annotations &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.jetbrains</groupId>-->
+<!--            <artifactId>annotations</artifactId>-->
+<!--            <version>24.0.1</version>-->
+<!--        </dependency>-->
+
+
     </dependencies>
 
     <build>

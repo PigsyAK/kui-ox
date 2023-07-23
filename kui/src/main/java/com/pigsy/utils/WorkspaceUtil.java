@@ -3,6 +3,10 @@ package com.pigsy.utils;
 import burp.api.montoya.logging.Logging;
 import com.pigsy.BurpExtensionOx;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +16,14 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class WorkspaceUtil {
+    public static void setClipboardString(String text) {
+        // 获取系统剪贴板
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        // 封装文本内容
+        Transferable trans = new StringSelection(text);
+        // 把文本内容设置到系统剪贴板
+        clipboard.setContents(trans, null);
+    }
 
     public static Path getWorkSpacePath() {
         return Path.of(System.getProperty("user.home"), ".kui-ox");
@@ -28,8 +40,10 @@ public class WorkspaceUtil {
         }
 
         ArrayList<String> paths = new ArrayList<>();
+        // 在工作目录下添加目录
         paths.add("bin");
         paths.add("conf");
+        paths.add("conf/interactsh");
         paths.add("data");
         paths.add("temp");
 

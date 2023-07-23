@@ -8,6 +8,8 @@
 - https://github.com/PortSwigger/burp-extensions-montoya-api
 - https://github.com/PortSwigger/burp-extensions-montoya-api-examples
 - https://github.com/API-Security/APIKit
+- ""
+- https://houbb.github.io/2021/09/05/automaton
 
 ### 工作空间
 
@@ -16,13 +18,13 @@
 - 存储配置文件
 - 存储运行必要的二进制文件
 - 临时文件
-- 自定义payload
+- 数据文件：自定义payload
 - 等等
 
 ### 功能
 
-- [ ] 在代理 `history` 中，正则匹配敏感信息，包括但不限于：邮箱、身份证、电话号码、内网地址、密码、特殊接口等
-    - HaE --- 一款使用Java开发的信息高亮标记与提取插件，
+- [ ] 正则匹配敏感信息，包括但不限于：邮箱、身份证、电话号码、内网地址、密码、特殊接口等
+    - HaE --- 一款使用Java开发的信息高亮标记与提取插件，https://github.com/gh0stkey/HaE
 - [ ] 在代理 `history` 中，指纹识别，识别web、cms、技术栈等
 - [ ] HackBar，https://github.com/d3vilbug/HackBar
 - [ ] Interact.sh 反链平台, https://github.com/wdahlenburg/interactsh-collaborator
